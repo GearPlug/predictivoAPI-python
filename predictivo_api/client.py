@@ -70,7 +70,7 @@ class Client(object):
             return False
 
     def describe_sugarcontacts(self):
-        endpoint = '/sugarcontacts/describe'
+        endpoint = '/contacto/describe'
         return self._request('GET', endpoint)
 
     def describe_agenda(self):
