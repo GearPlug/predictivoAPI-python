@@ -2,4 +2,4 @@
 
 ## Install
 
-pip install git+https://github.com/n3rio/predictivoAPI-python.git
+pip install git+https://github.com/GearPlug/predictivoAPI-python.git
