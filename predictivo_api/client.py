@@ -58,7 +58,7 @@ class Client(object):
 
     def _request(self, method, endpoint, params=None, data=None):
         headers = {
-            'Authorization': 'Basic {}'.format(self.creds),
+            'Authorization': 'Basic {}'.format(self.access_token),
             'Content-Type': 'application/json'
         }
         try:
