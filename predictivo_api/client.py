@@ -77,42 +77,39 @@ class Client(object):
         endpoint = '/agenda/describe'
         return self._request('GET', endpoint)
 
-    def create_agenda(self, id_call, status, date_start, date_exec, assigned_user_id, parent_id, parent_type,
-                      first_name,
-                      last_name, phone, prioridad_c):
+    def create_agenda(self, **kwargs):
         endpoint = '/agenda/crearAgenda'
         body = {
-            "idcall": id_call,
-            "status": status,
-            "date_start": date_start,
-            "date_exec": date_exec,
-            "assigned_user_id": assigned_user_id,
-            "parent_id": parent_id,
-            "Parent_type": parent_type,
-            "first_name": first_name,
-            "last_name": last_name,
-            "phone": phone,
-            "prioridad_c": prioridad_c
+            "idcall": kwargs['id_call'],
+            "status": kwargs['status'],
+            "date_start": kwargs['date_start'],
+            "date_exec": kwargs['date_exec'],
+            "assigned_user_id": kwargs['assigned_user_id'],
+            "parent_id": kwargs['parent_id'],
+            "Parent_type": kwargs['parent_type'],
+            "first_name": kwargs['first_name'],
+            "last_name": kwargs['last_name'],
+            "phone": kwargs['phone'],
+            "prioridad_c": kwargs['prioridad_c']
         }
         return self._request('POST', endpoint, body)
 
-    def create_contact(self, _id, status, date_entered, date_modified, first_name, last_name, phone_mobile, limpio,
-                       id_tipo, ejecutada, intentos, assigned_user_id, id_call, tipo_contac):
+    def create_contact(self, **kwargs):
         endpoint = '/contacto/crearContacto'
         body = {
-            "id": _id,
-            "status": status,
-            "date_entered": date_entered,
-            "date_modified": date_modified,
-            "first_name": first_name,
-            "last_name": last_name,
-            "phone_mobile": phone_mobile,
-            "Limpio": limpio,
-            "Ejecutada": ejecutada,
-            "IdTipo": id_tipo,
-            "Intentos": intentos,
-            "assigned_user_id": assigned_user_id,
-            "idcall": id_call,
-            "TipoContac": tipo_contac
+            "id": kwargs['_id'],
+            "status": kwargs['status'],
+            "date_entered": kwargs['date_entered'],
+            "date_modified": kwargs['date_modified'],
+            "first_name": kwargs['first_name'],
+            "last_name": kwargs['last_name'],
+            "phone_mobile": kwargs['phone_mobile'],
+            "Limpio": kwargs['limpio'],
+            "Ejecutada": kwargs['ejecutada'],
+            "IdTipo": kwargs['id_tipo'],
+            "Intentos": kwargs['intentos'],
+            "assigned_user_id": kwargs['assigned_user_id'],
+            "idcall": kwargs['id_call'],
+            "TipoContac": kwargs['tipo_contac']
         }
         return self._request('POST', endpoint, body)
