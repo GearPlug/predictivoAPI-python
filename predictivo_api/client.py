@@ -56,14 +56,14 @@ class Client(object):
         else:
             return response
 
-    def _request(self, method, endpoint, params=None, data=None):
+    def _request(self, method, endpoint, params=None, data=None, json=None):
         headers = {
             'Authorization': '{}'.format(self.access_token),
             'Content-Type': 'application/json'
         }
         try:
             url = self.base_url + endpoint
-            response = requests.request(method=method, url=url, params=params, data=data, headers=headers)
+            response = requests.request(method=method, url=url, params=params, data=data, json=json, headers=headers)
             return self._parse(response)
         except Exception as e:
             print("Error while request: ", e)
@@ -80,19 +80,18 @@ class Client(object):
     def create_agenda(self, **kwargs):
         endpoint = '/agenda/crearAgenda'
         body = {
-            "idcall": kwargs['id_call'],
+            "idcall": kwargs['idcall'],
             "status": kwargs['status'],
             "date_start": kwargs['date_start'],
-            "date_exec": kwargs['date_exec'],
             "assigned_user_id": kwargs['assigned_user_id'],
             "parent_id": kwargs['parent_id'],
-            "Parent_type": kwargs['parent_type'],
+            "Parent_type": kwargs['Parent_type'],
             "first_name": kwargs['first_name'],
             "last_name": kwargs['last_name'],
             "phone": kwargs['phone'],
             "prioridad_c": kwargs['prioridad_c']
         }
-        return self._request('POST', endpoint, body)
+        return self._request('POST', endpoint, json=body)
 
     def create_contact(self, **kwargs):
         endpoint = '/contacto/crearContacto'
