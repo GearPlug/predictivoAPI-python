@@ -96,19 +96,12 @@ class Client(object):
     def create_contact(self, **kwargs):
         endpoint = '/contacto/crearContacto'
         body = {
-            "id": kwargs['_id'],
+            "id": kwargs['id'],
             "status": kwargs['status'],
             "date_entered": kwargs['date_entered'],
-            "date_modified": kwargs['date_modified'],
             "first_name": kwargs['first_name'],
             "last_name": kwargs['last_name'],
             "phone_mobile": kwargs['phone_mobile'],
-            "Limpio": kwargs['limpio'],
-            "Ejecutada": kwargs['ejecutada'],
-            "IdTipo": kwargs['id_tipo'],
-            "Intentos": kwargs['intentos'],
             "assigned_user_id": kwargs['assigned_user_id'],
-            "idcall": kwargs['id_call'],
-            "TipoContac": kwargs['tipo_contac']
         }
-        return self._request('POST', endpoint, body)
+        return self._request('POST', endpoint, json=body)
