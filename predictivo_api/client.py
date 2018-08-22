@@ -99,6 +99,7 @@ class Client(object):
             "id": kwargs['id'],
             "status": kwargs['status'],
             "date_entered": kwargs['date_entered'],
+            "date_modified": kwargs['date_modified'],
             "first_name": kwargs['first_name'],
             "last_name": kwargs['last_name'],
             "phone_mobile": kwargs['phone_mobile'],
